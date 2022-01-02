@@ -1,0 +1,42 @@
+* {
+    overflow: visible;
+}
+
+#browse-by {
+    flex-basis: 30%;
+}
+
+#browse-by ul{
+    list-style: '–';
+    /* width: 1px; */
+}
+
+#browse-by ul li{
+    padding-left: 1em;
+    margin: 2em 0;
+    margin-left: 2em;
+}
+
+#browse-by ul li a{
+    color: black;
+    text-decoration: none;
+    transition:.1s;
+    padding: 5pt;
+    border: 0 solid red;
+}
+
+#browse-by ul li a:hover{
+    border-width: 2px;
+}
+
+#page-of {
+    flex-basis: 70%;
+}
+
+#news-image {
+    flex-basis: 30%;
+}
+
+#news-content {
+    flex-basis: 70%;
+}
