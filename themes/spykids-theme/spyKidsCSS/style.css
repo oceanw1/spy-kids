@@ -720,3 +720,48 @@ nav img {
 .headline--post-title a:hover {
   text-decoration: underline;
 }
+
+.page-section {
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+}
+@media (min-width: 530px) {
+  .page-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* container from tutorial */
+.container2 {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+}
+.container2--narrow {
+  max-width: 960px;
+}
+
+.link-list li {
+  padding: 1rem 0;
+  font-size: 1.5rem;
+  border-bottom: 1px dotted #dedede;
+}
+.search-overlay .link-list li {
+  font-size: 1.3rem;
+}
+.link-list li:last-child {
+  border-bottom: none;
+}
+.link-list a {
+  color: #f95738;
+}
+
+.min-list {
+  padding: 0;
+  margin: 0;
+}
+.min-list li {
+  list-style: none;
+}
