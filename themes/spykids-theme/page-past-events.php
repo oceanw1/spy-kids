@@ -1,3 +1,6 @@
+<?php 
+ get_header();
+?>
 <?php
  get_header();
  ?>
@@ -30,7 +33,7 @@
     justify-content: center;
     align-items: center;
     margin: 40px 0;
-    background-image: linear-gradient(cyan, green);
+    background-image: linear-gradient(cyan, yellow);
     color: black;
     font-size: 70px;
     width: 100%;
@@ -45,16 +48,19 @@
     color: maroon;
     margin: 30px auto;
   }
+  .event-summary__date--beige {
+  background-color: red;
+}
     </style>
 <hr id="separator" class="red-line">
 <div class="Headernews">
-        Upcoming Events
+        Past Events
 </div>
     <div style="margin: 50px 120px;">
         <div>
-            <h1 style="font-size: 40px;">Events</h1>
+            <h1 style="font-size: 40px;">Past Events</h1>
         </div>
-        <h3>Looking for Past events? <a href="<?php echo site_url('/past-events') ?>">Click here </a></h3>
+        <h3>Looking for Upcoming events? <a href="<?php echo site_url('/events') ?>">Click here </a></h3>
         <div style="margin-top: 15px;
             display: flex;
             padding: 2%;
@@ -65,8 +71,8 @@
                 padding-left: 40px;">
                 <?php 
                   $today = date('Ymd');
-                  $homepageEvents = new WP_Query(array(
-                    'posts_per_page' => 15,
+                  $pastEvents = new WP_Query(array(
+                    'posts_per_page' => 10,
                     'post_type' => 'event',
                     'meta_key' => 'event_post_date',
                     'orderby' => 'meta_value_num',
@@ -74,15 +80,15 @@
                     'meta_query' => array(
                       array(
                         'key' => 'event_post_date',
-                        'compare' => '>=',
+                        'compare' => '<=',
                         'value' => $today,
                         'type' => 'numeric'
                       )
                     )
                   ));
 
-                  while($homepageEvents->have_posts()) {
-                    $homepageEvents->the_post(); ?>
+                  while($pastEvents->have_posts()) {
+                    $pastEvents->the_post(); ?>
                     <hr style="height: 2px; background-co lor:gray;">
                     <div style="margin-top: 15px; display: flex; padding: 2%; padding-top: 0px;">
                       <div class="event-summary">
@@ -106,7 +112,7 @@
                     <?php
                   }
                   echo paginate_links(array(
-                    'total'=> $homepageEvents->max_num_pages,
+                    'total'=> $pastEvents->max_num_pages,
                     'prev_text'    => __('« Prev'),
                     'next_text'    => __('Next »'),
                 ));
@@ -117,4 +123,8 @@
 
 <?php
 get_footer();
+?>
+
+<?php 
+ get_footer();
 ?>

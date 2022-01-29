@@ -1,45 +1,65 @@
 <?php
   get_header();
+  $image = get_field('add_image');
+  $picture = $image['sizes']['single'];
 ?>
 
-<!-- header -->
-  <section class="newsheader">
-    <div class="row">
-      <div class="BasicColumn">
-       <h1 class="headline headline--medium headline--post-title"><?php the_title(); ?></h1>
-        <div class="metabox">
-        <p>
-          <a class="metabox__blog-home-link" href="<?php echo site_url('/blog'); ?>">
-            <i class="fa fa-home" aria-hidden="true"></i> Blog Home
-          </a> 
-          <span class="metabox__main">
-            Posted by <?php the_author_posts_link(); ?> on <?php the_time('M-j-Y'); ?> in <?php echo get_the_category_list(',  '); ?>
-          </span>
-        </p>
-      </div>
-        <hr class="red-lineleft">
-      </div>
+<style>
+   {
+    color: grey;
+  }
+  .subtletxt{
+    font-size: 25px;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .single-header{
+    font-size: 50px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  .toparea{
+    margin-top: 5%;
+    display: flex;
+    padding: 2%;
+  }
+  
+  .subtletxt{
+    display: inline-block;
+  }
+  </style>
+  <!-- <a id="news" href="index.html"> -->
+    <div style="margin: 50px 120px;">
+    <div style="margin-top: 15px;
+            display: flex;
+            padding: 2%;
+            padding-top: 0px;">
+      <img src="<?php echo $picture; ?>"  height="400px" class="mainIMG">
       
+      <div style="flex-basis: 50%;
+                margin: 15pt;
+                padding: 10pt;
+                padding-left: 40px;">
+        <h1 class="single-header"><?php the_title(); ?></h1>
+        <h2>Posted On <?php the_time('M-j-Y'); ?>  </h2>
+        <h2>Posted By  <?php the_author_posts_link(); ?>  </h2>
+        <p class="subtletxt"> <?php the_excerpt(); ?></p>
+        
+      </div>
     </div>
-  </section>
-
-<!-- title + image -->
-<section class="section1">
-  <div class="row">
-    <div class="EEcolumn">
-      <h2><?php the_title(); ?></h1>
+    <hr>
+    <div style="margin-top: 15px;
+            display: flex;
+            padding: 2%;
+            padding-top: 0px;">
+      <!-- Style the content immediatly from wordpress -->
+      <p> <?php the_content(); ?></p>
     </div>
-    <div class="BasicColumn" >
-      <!-- <img src="<?php echo get_theme_file_uri('/images/dababy.jpg') ?>." width="500px" alt="">  -->
-    </div>
+    
+    
   </div>
-  <div class="row">
-    <div class="text">
-      <p><?php the_content(); ?> </p>
-    </div>
-  </div>
-
-</section>
+<!-- </a> -->
 
 <?php
 echo paginate_links();

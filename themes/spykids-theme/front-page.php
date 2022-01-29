@@ -2,62 +2,55 @@
   get_header();
 ?>
 
-      <!-- <div class="HomeTextBox">
-      <h1>Binus Big Penis school</h1>
-      <p>This school so good. Once I vandalised the bathrooms and shit in the sink.
-        <br>eum eos aliquid dignissimos fugit magnam commodi iste.
-      </p><a href="login.html" class="HomeHeroButton">Sign up to add news!</a>
-    </div>
-</header> -->
 
-  
-<!-- Section 1 -->
-<section id="news-1" class="row">
-    <a href="news.html" class="Events-bullet1 row">
-        <div class="HomeColumn">
-            <div style="width: 100%; height: 100%;">
-                <img src="<?php echo get_theme_file_uri('/images/dababy.jpg') ?>" style="width: 300px; margin: auto;">
-            </div>
-        </div>
-        <div class="HomeColumn" style="flex-basis: 62%;">
-            <hr class="red-line">
-            <h1 class="NewsHeader">Top News</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </div>
-    </a>
-</section>
+
+
 
  <!-- Section 2 -->
 <section id="news-2" class="row">
     <div class="HomeColumn">
         <hr class="red-lineleft">
-        <h1 class="NewsHeader">Events</h1>
+        <h1 class="NewsHeader">Upcoming Events</h1>
         <ul class="Events-bullet">
-            <li><a href="" class="Events-bullet1">Event 1</a></li>
-            <hr class="ul_break">
-            <li><a href=""class="Events-bullet1">Event 2</a></li>
+            <?php 
+                $homepageEvents = new WP_Query(array(
+                    'posts_per_page' => 4,
+                    'post_type' => 'event',
+                ));
+                while($homepageEvents->have_posts()){
+                    $homepageEvents->the_post();
+                    ?>
+                    <div class="event-summary">
+                        <div class="event-summary__content"> 
+                             <a class="event-summary__date t-center" href="./single.html">
+                                <span class="event-summary__month"><?php the_time('M');?></span>
+                                <span class="event-summary__day"><?php the_time('d');?></span>
+                            </a>
+                            <!-- <p><?php for_location ?></p> -->
+                            <li><a href="<?php the_permalink();?>" class="Events-bullet1"><?php the_title();?></a></li>
+                            <hr class="ul_break">
+                        </div>
+                    </div>
+                    <?php
+                }
+            ?>
+            <!-- <li><a href=""class="Events-bullet1">Event 2</a></li>
             <hr class="ul_break">
             <li><a href=""class="Events-bullet1">Event 3</a></li>
             <hr class="ul_break">
             <li><a href=""class="Events-bullet1">Event 4</a></li>
             <hr class="ul_break">
             <li><a href=""class="Events-bullet1">Event 5</a></li>
-            <hr class="ul_break">
-
+            <hr class="ul_break"> -->
         </ul>
     </div>
-    <div class="campus-col" style="flex-basis: 50%;">
-        <a href="news.html"  style="width: 50%;">
-        <img src="<?php echo get_theme_file_uri('/images/dababy.jpg') ?>"  alt="" style="width: 100%; margin: auto;">
-        <div class="layer">
-            <h3>DABABY NEWS 
-                <br>
-                <br>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit officia quaerat ad sed facere recusandae
-                    suscipit, accusantium blanditiis temporibus repellendus.
-            </h3>
-        </div>
-        </a>
+    <div class="HomeColumn">
+        <hr class="red-line">
+        <h1 class="NewsHeader">Extra News for the Day </h1>
+        <p class="author"><b>Rafi Permadi</b></p>
+        <p class="caption">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century.</p>
     </div>
+    <div class="HomeColumn"> <img src="<?php echo get_theme_file_uri('/images/download.jpg') ?>" style="width:100%; height: auto;"></div>
 </section>
 
 
@@ -69,7 +62,7 @@
         <hr class="red-line">
         <h1 class="NewsHeader">Extra Extra News for the Day </h1>
         <p class="author"><b>Rafi Permadi</b></p>
-        <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:</p>
+        <p class="caption">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century.</p>
     </div>
     <div class="HomeColumn">
     <hr class="red-lineright">
@@ -97,10 +90,25 @@
 
 <!-- CALL TO ACTION -->
   <section class="cta">
-    <h1>Wanna write your own news?</h1>
-    <a href="login.html" class="hero-btn">Sign in / Log in</a>
-
-  </section>
+    <div id="banner-4" class="sliding-banner">
+        <h1>There are only 2 sexes</h1>
+        <a href="login.html" class="hero-btn">The one I had with your dad, and the one I had with your mom</a>
+    </div>
+    <div id="banner-3" class="sliding-banner">
+        <h1>This 3rd banner is wibu</h1>
+        <a href="login.html" class="hero-btn">Jitsu wa watashi itu 3rd banner desu.</a>
+    </div>
+    <div id="banner-2" class="sliding-banner">
+        <h1>This is 2 banner</h1>
+        <a href="login.html" class="hero-btn">Sign in / Log in</a>
+    </div>
+    <div id="banner-1" class="sliding-banner">
+        <h1>Wanna write your own news?</h1>
+        <a href="login.html" class="hero-btn">Sign in / Log in</a>
+    </div>
+    <a class="slideban" style="left: 20pt;" onclick="func_c(1)"><</a>
+    <a class="slideban" style="right: 20pt;" onclick="func_c(0)">></a>
+</section>
 
 
 </body>
